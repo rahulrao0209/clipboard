@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+:root {
+  --primary-blue: #2186f2;
+  --primary-off-white: #f5f5f5;
+  --secondary-off-white: #f2f3f4;
+}
+
+html {
+  font-size: 37.5%; /* 1rem = 6px (6/16 * 100 = 37.5) */
+  font-family: 'Poppins', sans-serif;
+
+  /* Mobile Portrait */
+  @media only screen and (min-width: 290px) {
+    font-size: 43.75%;
+  }
+
+  /* Mobile Landscape */
+  @media only screen and (min-width: 478px) {
+    font-size: 50%;
+  }
+
+  /* Tablet landscape */
+  @media only screen and (min-width: 768px) {
+    font-size: 56.25%;
+  }
+
+  /* Desktop */
+  @media only screen and (min-width: 992px) {
+    font-size: 62.5%;
+  }
+
+  /* Big desktop */
+  @media only screen and (min-width: 1440px) {
+    font-size: 75%;
+  }
+}
+
+body {
+  box-sizing: border-box;
+}
+
+.popup {
+  min-width: 50rem;
+  min-height: 80rem;
+}
