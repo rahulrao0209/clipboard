@@ -1,0 +1,48 @@
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  background-color: var(--primary-blue);
+
+  height: 8rem;
+  width: 100%;
+}
+
+.add-btn {
+  position: absolute;
+  top: -50%;
+  left: 50%;
+
+  border: 1.3em solid #fff;
+  border-radius: 50%;
+  background-color: var(--primary-blue);
+
+  width: 8rem;
+  height: 8rem;
+
+  transform: translate(-50%, 0);
+  transition: all 0.2s;
+
+  /* Add the hover and active state styles for the add button */
+  &:hover {
+    cursor: pointer;
+    transform: translate(-50%, 0) scale(1.1);
+  }
+
+  &:active {
+    cursor: pointer;
+    transform: translate(-50%, 0) scale(0.9);
+  }
+}
+
+/* Styling the pencil icon */
+.pencil-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4em;
+  color: #fff;
+  user-select: none;
+}
