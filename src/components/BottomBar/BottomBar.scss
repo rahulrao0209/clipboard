@@ -49,19 +49,19 @@
   height: 8rem;
 
   transform: translate(-50%, 0);
-  transition: all 0.2s;
+  transition: all 0.8s;
   z-index: 10;
 
   /* Add the hover and active state styles for the add button */
   &:hover {
     cursor: pointer;
-    transform: translate(-50%, 0) scale(1.1);
+    transform: translate(-50%, 0) rotate(180deg);
     background-color: var(--hover-blue);
   }
 
   &:active {
     cursor: pointer;
-    transform: translate(-50%, 0) scale(1);
+    transform: translate(-50%, 0);
   }
 }
 
