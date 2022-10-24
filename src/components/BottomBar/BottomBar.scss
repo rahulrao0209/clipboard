@@ -8,11 +8,13 @@
   width: 100%;
 
   /* 
-    Adding a curve to the bottom bar
-    The width is calculated as (50% - 4rem)
-    as 50% is half the width of the bottom bar
-    and 4rem is used to subtract the width of the button.
+    Adding a curve to the bottom bar.
+    The width for the curve bars is calculated as (50% - 4rem)
+    because 50% is half the width of the bottom bar and 4rem
+    is used to subtract the width of the button back layer.
   */
+
+  /* Left side curve */
   &::before {
     content: '';
     position: absolute;
@@ -24,6 +26,7 @@
     border-top-right-radius: 20px;
   }
 
+  /* Right side curve */
   &::after {
     content: '';
     position: absolute;
@@ -38,31 +41,48 @@
 
 .add-btn {
   position: absolute;
-  top: -75%;
+  top: -55%;
   left: 50%;
 
-  border: 1.3em solid #fff;
   border-radius: 50%;
   background-color: var(--primary-blue);
 
-  width: 8rem;
-  height: 8rem;
+  width: 6rem;
+  height: 6rem;
 
   transform: translate(-50%, 0);
-  transition: all 0.8s;
+  transition: all 0.5s;
   z-index: 10;
 
   /* Add the hover and active state styles for the add button */
   &:hover {
     cursor: pointer;
-    transform: translate(-50%, 0) rotate(180deg);
+    transform: translate(-50%, 0) scale(1.1) rotate(90deg);
     background-color: var(--hover-blue);
   }
 
   &:active {
     cursor: pointer;
-    transform: translate(-50%, 0);
+    transform: translate(-50%, 0) scale(0.9);
   }
+}
+
+.add-btn__back-layer {
+  position: absolute;
+
+  /* 
+    Place it in a way that it creates a
+    back layer for the add button.
+    This will allow us to scale add button up and down
+    without affecting the bottom bar curves.
+  */
+  top: -75%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  background-color: #fff;
 }
 
 /* Styling the pencil icon */

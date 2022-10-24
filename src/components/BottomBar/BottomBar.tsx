@@ -7,6 +7,7 @@ const BottomBar = function () {
       <div className="add-btn">
         <FaPencilAlt className="pencil-icon" />
       </div>
+      <span className="add-btn__back-layer"></span>
     </div>
   );
 };
