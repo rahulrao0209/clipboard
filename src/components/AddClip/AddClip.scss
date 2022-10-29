@@ -1,0 +1,157 @@
+/* Mixin for the input fields */
+@mixin FieldContainer {
+  width: 100%;
+  text-align: center;
+}
+
+@mixin FieldInput {
+  width: 90%;
+  margin: 1.5rem auto;
+  border: 0;
+}
+
+@mixin Label {
+  display: block;
+  visibility: hidden;
+}
+
+@mixin Placeholder {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  color: var(--light-grey-2);
+  letter-spacing: 0.1em;
+}
+
+.add-clip {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  border-radius: 20px 20px 0 0;
+  background-color: var(--primary-white);
+
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
+
+  height: 80vh;
+  width: 100%;
+  z-index: 20;
+  transform: scale(1);
+
+  /* Content for the clip - Title and content */
+  &__data {
+    width: 100%;
+    min-height: 80%;
+    border-radius: inherit;
+  }
+
+  /* Title and content */
+  &__title {
+    @include FieldContainer;
+    border-radius: inherit;
+
+    & label {
+      @include Label;
+    }
+
+    & input {
+      @include FieldInput;
+      padding: 1.5rem 1rem 1rem 1rem;
+      border-bottom: 0.5px solid var(--light-grey-2);
+
+      &:focus {
+        outline: none;
+        border-bottom: 0.5px solid var(--secondary-blue);
+      }
+
+      &::placeholder {
+        @include Placeholder;
+        font-size: 1.5em;
+      }
+
+      &:focus::placeholder {
+        color: var(--secondary-blue);
+      }
+    }
+  }
+
+  &__content {
+    @include FieldContainer;
+
+    & label {
+      @include Label;
+    }
+
+    & textarea {
+      @include FieldInput;
+      position: relative;
+      padding: 1.5rem 1rem;
+      min-height: 40rem;
+      resize: none;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        @include Placeholder;
+        position: absolute;
+        font-size: 1.2em;
+        top: 1rem;
+        left: 1.2rem;
+      }
+
+      &:focus::placeholder {
+        color: var(--secondary-blue);
+      }
+    }
+  }
+
+  /* Controls - Add and delete */
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 1rem 2.5rem;
+  }
+
+  &__delete-btn,
+  &__send-btn {
+    position: relative;
+    width: 6rem;
+    height: 6rem;
+    border: none;
+    border-radius: 50%;
+    padding: 0rem;
+    background-color: transparent;
+    transition: all 0.2s;
+
+    /* Add hover and active styles */
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.2);
+    }
+
+    &:active {
+      cursor: pointer;
+      transform: scale(1);
+    }
+  }
+
+  &__delete-btn:hover .delete-icon {
+    color: var(--delete-red);
+  }
+
+  &__send-btn:hover .send-icon {
+    color: var(--secondary-blue);
+  }
+}
+
+.delete-icon,
+.send-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  color: grey;
+}

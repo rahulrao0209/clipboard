@@ -1,4 +1,4 @@
-import { MdContentCopy } from 'react-icons/md';
+import { MdContentCopy } from '../../icons';
 import './Header.scss';
 
 const Header = function () {

@@ -1,4 +1,4 @@
-import { BottomBar, ClipList, Header } from './components';
+import { AddClip, BottomBar, ClipList, Header } from './components';
 import './Popup.scss';
 
 const Popup = function () {
@@ -7,6 +7,7 @@ const Popup = function () {
       <Header />
       <ClipList />
       <BottomBar />
+      <AddClip />
     </div>
   );
 };
