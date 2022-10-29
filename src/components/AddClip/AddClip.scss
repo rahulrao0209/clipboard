@@ -35,7 +35,7 @@
   height: 80vh;
   width: 100%;
   z-index: 20;
-  transform: scale(1);
+  transition: all 0.8s 0.5s;
 
   /* Content for the clip - Title and content */
   &__data {
@@ -144,14 +144,52 @@
   &__send-btn:hover .send-icon {
     color: var(--secondary-blue);
   }
+
+  /* Close button to close the window */
+  &__close-btn {
+    position: absolute;
+    top: 2.5rem;
+    right: 2.5rem;
+    width: 5rem;
+    height: 5rem;
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    transition: all 0.2s;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.2);
+    }
+
+    &:active {
+      cursor: pointer;
+      transform: scale(1);
+    }
+
+    &:hover .close-icon {
+      color: var(--secondary-blue);
+    }
+  }
 }
 
+/* Styling the icons used inside the buttons */
 .delete-icon,
-.send-icon {
+.send-icon,
+.close-icon {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 2em;
   color: grey;
+}
+
+.close-icon {
+  font-size: 1.3em;
+}
+
+/* Show/Hide window states */
+.hide {
+  bottom: -100%;
 }

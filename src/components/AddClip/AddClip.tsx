@@ -1,9 +1,17 @@
-import { BiSend, MdDelete } from '../../icons';
+import { BiSend, MdDelete, TfiClose } from '../../icons';
 import './AddClip.scss';
 
-const AddClip = function () {
+type AddClipProps = {
+  showAddClipWindow: boolean;
+  toggleAddClipWindow: () => void;
+};
+
+const AddClip = function ({
+  showAddClipWindow,
+  toggleAddClipWindow,
+}: AddClipProps) {
   return (
-    <div className="add-clip">
+    <div className={`add-clip ${showAddClipWindow ? '' : 'hide'}`}>
       <div className="add-clip__data">
         <div className="add-clip__title">
           <label htmlFor="title">Clip Name</label>
@@ -21,6 +29,9 @@ const AddClip = function () {
         </button>
         <button className="add-clip__send-btn">
           <BiSend className="send-icon" />
+        </button>
+        <button className="add-clip__close-btn" onClick={toggleAddClipWindow}>
+          <TfiClose className="close-icon" />
         </button>
       </div>
     </div>
