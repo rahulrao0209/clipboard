@@ -44,7 +44,7 @@
   top: -55%;
   left: 50%;
 
-  border-radius: 50%;
+  border-radius: 100vw;
   background-color: var(--primary-blue);
 
   width: 6rem;
@@ -81,7 +81,7 @@
   transform: translate(-50%, 0);
   width: 8rem;
   height: 8rem;
-  border-radius: 50%;
+  border-radius: 100vw;
   background-color: var(--primary-white);
 }
 

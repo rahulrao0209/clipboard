@@ -120,7 +120,7 @@
     width: 6rem;
     height: 6rem;
     border: none;
-    border-radius: 50%;
+    border-radius: 100vw;
     padding: 0rem;
     background-color: transparent;
     transition: all 0.2s;
@@ -154,7 +154,7 @@
     height: 5rem;
     background-color: transparent;
     border: none;
-    border-radius: 50%;
+    border-radius: 100vw;
     transition: all 0.2s;
 
     &:hover {
