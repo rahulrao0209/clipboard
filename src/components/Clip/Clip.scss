@@ -1,0 +1,65 @@
+.clip {
+  width: 90%;
+  min-height: 5rem;
+  margin: 2rem auto;
+  padding: 1.4em 2em;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+
+  /* Remove top margin from first clip */
+  //   &:first-of-type {
+  //     margin-top: 0;
+  //   }
+
+  /* Style the clip title and content */
+  &__title {
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 0.2em 0;
+    color: rgb(58, 58, 58);
+  }
+
+  &__content {
+    font-size: 1.5rem;
+    padding: 0.2em 0;
+    color: grey;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & > p {
+      width: 80%;
+    }
+  }
+
+  /* Style the copy button */
+  &__copy {
+    border: none;
+    width: 6rem;
+    height: 6rem;
+    background-color: transparent;
+    border-radius: 50%;
+    transition: all 0.2s;
+
+    /* Style the active and hover states for the copy button */
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+
+    &:active {
+      cursor: pointer;
+      transform: scale(0.9);
+    }
+
+    /* Update the icon color when the button is being hovered upon */
+    &:hover &-icon {
+      color: grey;
+    }
+  }
+
+  &__copy-icon {
+    font-size: 1.8em;
+    color: var(--light-grey-2);
+  }
+}
