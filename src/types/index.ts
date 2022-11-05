@@ -1,12 +1,17 @@
 export type ClipData = {
-  id: string | number;
+  id: string;
   title?: string;
   content: string;
 };
 
+export type ClipPayload = {
+  id: string;
+  data?: ClipData;
+};
+
 export type ClipAction = {
   type: string;
-  payload?: ClipData | string;
+  payload: ClipPayload;
 };
 
 export type ClipContextProps = {

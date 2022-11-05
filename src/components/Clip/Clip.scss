@@ -5,11 +5,19 @@
   padding: 1.4em 2em;
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  background-color: var(--primary-white);
+  user-select: none;
+  transition: all 0.1s;
 
-  /* Remove top margin from first clip */
-  //   &:first-of-type {
-  //     margin-top: 0;
-  //   }
+  /* Style the active and hover states for the clip */
+  &:hover {
+    cursor: pointer;
+    background-color: #eef2f8;
+  }
+
+  &:active {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 4px;
+  }
 
   /* Style the clip title and content */
   &__title {

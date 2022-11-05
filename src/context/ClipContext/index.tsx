@@ -18,15 +18,20 @@ export const ClipContextProvider = function (props: any) {
   const addClip = function (clip: ClipData) {
     dispatch({
       type: ADD_CLIP,
-      payload: clip,
+      payload: {
+        id: clip.id,
+        data: clip,
+      },
     });
   };
 
   /* Update Clip */
-  const updateClip = function (clip: ClipData) {
+  const updateClip = function (clipId: string) {
     dispatch({
       type: UPDATE_CLIP,
-      payload: clip,
+      payload: {
+        id: clipId,
+      },
     });
   };
 
@@ -34,7 +39,9 @@ export const ClipContextProvider = function (props: any) {
   const deleteClip = function (clipId: string) {
     dispatch({
       type: DELETE_CLIP,
-      payload: clipId,
+      payload: {
+        id: clipId,
+      },
     });
   };
 

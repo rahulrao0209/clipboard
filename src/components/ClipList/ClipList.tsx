@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import ClipContext from '../../context/ClipContext';
 import { FaPencilAlt } from '../../icons';
 import type { ClipData } from '../../types';
