@@ -8,6 +8,7 @@ import './ClipList.scss';
 const ClipList = function () {
   const { clips } = useContext(ClipContext);
 
+  console.log('Clips: ', clips);
   // const [clips, setClips] = useState<ClipData[]>([
   // {
   //   id: 1,

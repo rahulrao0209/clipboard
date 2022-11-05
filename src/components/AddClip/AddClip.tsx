@@ -11,30 +11,54 @@ const AddClip = function () {
   const [clipContent, setClipContent] = useState('');
 
   /* Get the required data and functions from ClipContext and ClipWindowContext */
-  const { clips, addClip } = useContext(ClipContext);
-  const { clipId, showAddClipWindow, toggleAddClipWindow } =
+  const { clips, addClip, updateClip, deleteClip } = useContext(ClipContext);
+  const { clipId, setClipId, showAddClipWindow, toggleAddClipWindow } =
     useContext(ClipWindowContext);
 
-  const handleAddClip = function () {
-    const id = Date.now();
-    const title = clipTitle;
-    const content = clipContent;
+  const handleUpdateClip = function () {
+    /* Update an existing clip */
+    updateClip({
+      id: clipId,
+      title: clipTitle,
+      content: clipContent,
+    });
 
     /* Clean up the inputs */
     setClipTitle('');
     setClipContent('');
-
-    /* If content is empty, do not add the clip */
-    if (!content) return;
-
-    addClip({
-      id,
-      title,
-      content,
-    });
   };
 
-  const handleDeleteClip = function (event: React.MouseEvent<HTMLElement>) {};
+  const handleAddClip = function () {
+    /* If content is empty, do not add or update the clip */
+    if (!clipContent) return;
+
+    /* Update an existing clip or add a new one */
+    if (clipId) {
+      handleUpdateClip();
+      return;
+    }
+
+    /* Add new clip */
+    addClip({
+      id: Date.now(),
+      title: clipTitle,
+      content: clipContent,
+    });
+
+    /* Clean up the inputs */
+    setClipTitle('');
+    setClipContent('');
+  };
+
+  const handleDeleteClip = function () {
+    /* Delete the clip */
+    deleteClip(clipId);
+    setClipId('');
+
+    /* Clean up the inputs */
+    setClipTitle('');
+    setClipContent('');
+  };
 
   useEffect(() => {
     /* Show the current clip's values in the window if an existing clip is selected */

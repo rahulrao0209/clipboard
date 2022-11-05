@@ -1,12 +1,18 @@
 import type { ClipAction, ClipData } from '../../types';
 import { ADD_CLIP, DELETE_CLIP, UPDATE_CLIP } from './clipActions';
 
-const findClip = function (clips: ClipData[], clipId: string) {
-  return clips.find((clip: ClipData) => clip.id === clipId);
-};
-
-const updateClip = function (clips: ClipData[], clipId: string) {
-  const clipToUpdate = findClip(clips, clipId);
+const updateClip = function (clips: ClipData[], clipToUpdate: ClipData) {
+  return clips.map((clip: ClipData) => {
+    if (clip.id === clipToUpdate.id) {
+      return {
+        ...clip,
+        id: Date.now(),
+        title: clipToUpdate.title,
+        content: clipToUpdate.content,
+      };
+    }
+    return clip;
+  });
 };
 
 const deleteClip = function (clips: ClipData[], clipId: string) {
@@ -18,9 +24,9 @@ const clipReducer = function (state: ClipData[], action: ClipAction): any {
     case ADD_CLIP:
       return [...state, action.payload.data];
     case UPDATE_CLIP:
-      updateClip(state, action.payload.id);
+      return updateClip(state, action.payload.data);
     case DELETE_CLIP:
-      deleteClip(state, action.payload.id);
+      return deleteClip(state, action.payload.id);
     default:
       return [...state];
   }

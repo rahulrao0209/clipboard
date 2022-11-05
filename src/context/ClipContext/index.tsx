@@ -26,11 +26,12 @@ export const ClipContextProvider = function (props: any) {
   };
 
   /* Update Clip */
-  const updateClip = function (clipId: string) {
+  const updateClip = function (clip: ClipData) {
     dispatch({
       type: UPDATE_CLIP,
       payload: {
-        id: clipId,
+        id: clip.id,
+        data: clip,
       },
     });
   };

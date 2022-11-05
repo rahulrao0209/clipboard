@@ -6,16 +6,14 @@ import type { ClipData } from '../../types';
 import './Clip.scss';
 
 const Clip = function ({ id, title, content }: ClipData) {
-  const { updateClip } = useContext(ClipContext);
   const { toggleAddClipWindow, setClipId } = useContext(ClipWindowContext);
 
-  const handleUpdateClip = function () {
+  const updateClipId = function () {
     setClipId(id);
     toggleAddClipWindow();
-    // updateClip(id);
   };
 
-  const handleCopyClick = function (
+  const copyToClipboard = function (
     event: React.MouseEvent<HTMLElement> | React.MouseEvent<SVGElement>,
   ) {
     event.preventDefault();
@@ -23,14 +21,14 @@ const Clip = function ({ id, title, content }: ClipData) {
   };
 
   return (
-    <div className="clip" data-clipid={id} onClick={handleUpdateClip}>
+    <div className="clip" data-clipid={id} onClick={updateClipId}>
       <div className="clip__title">{title}</div>
       <div className="clip__content">
         <p>{content}</p>
-        <button className="clip__copy" onClick={handleCopyClick}>
+        <button className="clip__copy" onClick={copyToClipboard}>
           <MdContentCopy
             className="clip__copy-icon"
-            onClick={handleCopyClick}
+            onClick={copyToClipboard}
           />
         </button>
       </div>
