@@ -1,9 +1,6 @@
 import { FaPencilAlt } from '../../icons';
+import type { BottomBarProps } from '../../types';
 import './BottomBar.scss';
-
-type BottomBarProps = {
-  toggleAddClipWindow: () => void;
-};
 
 const BottomBar = function ({ toggleAddClipWindow }: BottomBarProps) {
   return (

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { AddClip, BottomBar, ClipList, Header } from './components';
+import { ClipContextProvider } from './context/ClipContext';
 import './Popup.scss';
 
 const Popup = function () {
@@ -11,13 +12,15 @@ const Popup = function () {
 
   return (
     <div className="popup">
-      <Header />
-      <ClipList />
-      <BottomBar toggleAddClipWindow={toggleAddClipWindow} />
-      <AddClip
-        toggleAddClipWindow={toggleAddClipWindow}
-        showAddClipWindow={showAddClipWindow}
-      />
+      <ClipContextProvider>
+        <Header />
+        <ClipList />
+        <BottomBar toggleAddClipWindow={toggleAddClipWindow} />
+        <AddClip
+          toggleAddClipWindow={toggleAddClipWindow}
+          showAddClipWindow={showAddClipWindow}
+        />
+      </ClipContextProvider>
     </div>
   );
 };
