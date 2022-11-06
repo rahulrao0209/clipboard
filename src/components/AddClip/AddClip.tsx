@@ -92,6 +92,7 @@ const AddClip = function () {
             id="title"
             onChange={(event) => setClipTitle(event.target.value)}
             value={clipTitle}
+            tabIndex={-1}
           />
         </div>
         <div className="add-clip__content">
@@ -101,18 +102,28 @@ const AddClip = function () {
             id="content"
             onChange={(event) => setClipContent(event.target.value)}
             value={clipContent}
+            tabIndex={-1}
           />
         </div>
       </div>
 
       <div className="add-clip__controls">
-        <button className="add-clip__delete-btn" onClick={handleDeleteClip}>
+        <button
+          className="add-clip__delete-btn"
+          onClick={handleDeleteClip}
+          tabIndex={-1}>
           <MdDelete className="delete-icon" />
         </button>
-        <button className="add-clip__send-btn" onClick={handleAddClip}>
+        <button
+          className="add-clip__send-btn"
+          onClick={handleAddClip}
+          tabIndex={-1}>
           <BiSend className="send-icon" />
         </button>
-        <button className="add-clip__close-btn" onClick={toggleAddClipWindow}>
+        <button
+          className="add-clip__close-btn"
+          onClick={toggleAddClipWindow}
+          tabIndex={-1}>
           <TfiClose className="close-icon" />
         </button>
       </div>

@@ -25,6 +25,7 @@
     font-weight: 700;
     padding: 0.2em 0;
     color: rgb(58, 58, 58);
+    overflow: hidden;
   }
 
   &__content {
@@ -37,6 +38,7 @@
 
     & > p {
       width: 80%;
+      overflow: hidden;
     }
   }
 

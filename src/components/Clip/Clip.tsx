@@ -18,6 +18,14 @@ const Clip = function ({ id, title, content }: ClipData) {
   ) {
     event.preventDefault();
     event.stopPropagation();
+
+    /* Write/Copy the clip data to the system clipboard */
+    navigator.clipboard
+      .writeText(content)
+      .then(() => console.log('Copied to clipboard'))
+      .catch((err: ErrorEvent) =>
+        console.log('Something went wrong - ', err.message),
+      );
   };
 
   return (
