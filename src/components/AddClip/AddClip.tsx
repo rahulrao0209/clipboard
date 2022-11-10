@@ -1,8 +1,7 @@
-import { useContext, useEffect, useRef, useState } from 'react';
-import type { ClipData } from '~types';
-import ClipContext from '../../context/ClipContext';
-import ClipWindowContext from '../../context/ClipWindowContext';
+import { useContext, useEffect, useState } from 'react';
+import { ClipContext, ClipWindowContext, ToastContext } from '../../context';
 import { BiSend, MdDelete, TfiClose } from '../../icons';
+import type { ClipData } from '../../types';
 import './AddClip.scss';
 
 const AddClip = function () {
@@ -14,6 +13,7 @@ const AddClip = function () {
   const { clips, addClip, updateClip, deleteClip } = useContext(ClipContext);
   const { clipId, setClipId, showAddClipWindow, toggleAddClipWindow } =
     useContext(ClipWindowContext);
+  const { handleToast } = useContext(ToastContext);
 
   const handleUpdateClip = function () {
     /* Update an existing clip */
@@ -26,6 +26,9 @@ const AddClip = function () {
     /* Clean up the inputs */
     setClipTitle('');
     setClipContent('');
+
+    /* Show toast notification */
+    handleToast(true, 'Updated clip!');
   };
 
   const handleAddClip = function () {
@@ -48,6 +51,9 @@ const AddClip = function () {
     /* Clean up the inputs */
     setClipTitle('');
     setClipContent('');
+
+    /* Show toast notification */
+    handleToast(true, 'Added clip!');
   };
 
   const handleDeleteClip = function () {
@@ -58,6 +64,9 @@ const AddClip = function () {
     /* Clean up the inputs */
     setClipTitle('');
     setClipContent('');
+
+    /* Show toast notification */
+    handleToast(true, 'Deleted clip!');
   };
 
   useEffect(() => {

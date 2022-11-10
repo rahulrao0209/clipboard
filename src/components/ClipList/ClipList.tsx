@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import ClipContext from '../../context/ClipContext';
+import { ClipContext } from '../../context';
 import { FaPencilAlt } from '../../icons';
 import type { ClipData } from '../../types';
 import { Clip } from '../index';
@@ -8,7 +8,6 @@ import './ClipList.scss';
 const ClipList = function () {
   const { clips } = useContext(ClipContext);
 
-  console.log('Clips: ', clips);
   // const [clips, setClips] = useState<ClipData[]>([
   // {
   //   id: 1,

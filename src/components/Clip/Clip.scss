@@ -12,7 +12,7 @@
   /* Style the active and hover states for the clip */
   &:hover {
     cursor: pointer;
-    background-color: #eef2f8;
+    background-color: var(--blue-tint-1);
   }
 
   &:active {
@@ -24,14 +24,14 @@
     font-size: 2rem;
     font-weight: 700;
     padding: 0.2em 0;
-    color: rgb(58, 58, 58);
+    color: var(--primary-dark);
     overflow: hidden;
   }
 
   &__content {
     font-size: 1.5rem;
     padding: 0.2em 0;
-    color: grey;
+    color: var(--grey-1);
     display: flex;
     justify-content: space-between;
     align-items: center;

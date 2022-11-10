@@ -21,6 +21,10 @@ export type ClipContextProps = {
   deleteClip: (clipId: string) => void;
 };
 
+export type ToastProps = {
+  message: string;
+};
+
 export type BottomBarProps = {
   toggleAddClipWindow: () => void;
 };

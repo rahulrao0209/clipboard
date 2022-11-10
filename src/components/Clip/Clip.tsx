@@ -1,12 +1,12 @@
 import { useContext } from 'react';
-import ClipContext from '../../context/ClipContext';
-import ClipWindowContext from '../../context/ClipWindowContext';
+import { ClipWindowContext, ToastContext } from '../../context/';
 import { MdContentCopy } from '../../icons';
 import type { ClipData } from '../../types';
 import './Clip.scss';
 
 const Clip = function ({ id, title, content }: ClipData) {
   const { toggleAddClipWindow, setClipId } = useContext(ClipWindowContext);
+  const { handleToast } = useContext(ToastContext);
 
   const updateClipId = function () {
     setClipId(id);
@@ -22,7 +22,9 @@ const Clip = function ({ id, title, content }: ClipData) {
     /* Write/Copy the clip data to the system clipboard */
     navigator.clipboard
       .writeText(content)
-      .then(() => console.log('Copied to clipboard'))
+      .then(() => {
+        handleToast(true, 'Copied to clipboard!');
+      })
       .catch((err: ErrorEvent) =>
         console.log('Something went wrong - ', err.message),
       );

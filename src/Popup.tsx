@@ -1,17 +1,22 @@
-import { AddClip, BottomBar, ClipList, Header } from './components';
-import { ClipContextProvider } from './context/ClipContext';
-import { ClipWindowContextProvider } from './context/ClipWindowContext';
+import { AddClip, BottomBar, ClipList, Header, Toast } from './components';
+import { providers } from './context';
 import './Popup.scss';
+
+const { ClipContextProvider, ClipWindowContextProvider, ToastContextProvider } =
+  providers;
 
 const Popup = function () {
   return (
     <div className="popup">
       <ClipWindowContextProvider>
         <ClipContextProvider>
-          <Header />
-          <ClipList />
-          <BottomBar />
-          <AddClip />
+          <ToastContextProvider>
+            <Toast />
+            <Header />
+            <ClipList />
+            <BottomBar />
+            <AddClip />
+          </ToastContextProvider>
         </ClipContextProvider>
       </ClipWindowContextProvider>
     </div>
