@@ -15,7 +15,7 @@ export const ToastContextProvider = function (props: any) {
     toastTimeout = window.setTimeout(() => {
       setToastMessage('');
       setShowToast(false);
-    }, 1000);
+    }, 2800);
   };
 
   /* Clear the timeout when component unmounts */

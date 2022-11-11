@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { ADDED_NEW_CLIP, DELETED_CLIP, UPDATED_CLIP } from '../../constants';
 import { ClipContext, ClipWindowContext, ToastContext } from '../../context';
 import { BiSend, MdDelete, TfiClose } from '../../icons';
 import type { ClipData } from '../../types';
@@ -28,7 +29,7 @@ const AddClip = function () {
     setClipContent('');
 
     /* Show toast notification */
-    handleToast(true, 'Updated clip!');
+    handleToast(true, UPDATED_CLIP);
   };
 
   const handleAddClip = function () {
@@ -53,7 +54,7 @@ const AddClip = function () {
     setClipContent('');
 
     /* Show toast notification */
-    handleToast(true, 'Added clip!');
+    handleToast(true, ADDED_NEW_CLIP);
   };
 
   const handleDeleteClip = function () {
@@ -66,7 +67,7 @@ const AddClip = function () {
     setClipContent('');
 
     /* Show toast notification */
-    handleToast(true, 'Deleted clip!');
+    handleToast(true, DELETED_CLIP);
   };
 
   useEffect(() => {

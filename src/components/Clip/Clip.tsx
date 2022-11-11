@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { COPIED_TO_CLIPBOARD } from '../../constants';
 import { ClipWindowContext, ToastContext } from '../../context/';
 import { MdContentCopy } from '../../icons';
 import type { ClipData } from '../../types';
@@ -23,7 +24,7 @@ const Clip = function ({ id, title, content }: ClipData) {
     navigator.clipboard
       .writeText(content)
       .then(() => {
-        handleToast(true, 'Copied to clipboard!');
+        handleToast(true, COPIED_TO_CLIPBOARD);
       })
       .catch((err: ErrorEvent) =>
         console.log('Something went wrong - ', err.message),
