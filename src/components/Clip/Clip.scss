@@ -1,13 +1,16 @@
 .clip {
   width: 90%;
-  min-height: 5rem;
+  height: 12rem;
   margin: 2rem auto;
   padding: 1.4em 2em;
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
   background-color: var(--primary-white);
   user-select: none;
+  overflow: hidden;
+  overflow-wrap: break-word;
   transition: all 0.1s;
+  display: flex;
 
   /* Style the active and hover states for the clip */
   &:hover {
@@ -20,25 +23,35 @@
   }
 
   /* Style the clip title and content */
+  &__data {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    overflow: hidden;
+    padding: 0.5rem 1rem;
+  }
+
   &__title {
     font-size: 2rem;
     font-weight: 700;
-    padding: 0.2em 0;
+    padding: 0.1em 0;
+    flex-shrink: 0;
     color: var(--primary-dark);
     overflow: hidden;
   }
 
   &__content {
     font-size: 1.5rem;
-    padding: 0.2em 0;
+    padding: 0.1em 0;
+    flex-shrink: 0;
     color: var(--grey-1);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    overflow: hidden;
 
     & > p {
-      width: 80%;
-      overflow: hidden;
+      width: 100%;
     }
   }
 
@@ -47,6 +60,8 @@
     border: none;
     width: 6rem;
     height: 6rem;
+    align-self: center;
+    margin-top: 1.5rem;
     background-color: transparent;
     border-radius: 100vw;
     transition: all 0.2s;

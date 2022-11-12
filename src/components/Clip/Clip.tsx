@@ -14,6 +14,15 @@ const Clip = function ({ id, title, content }: ClipData) {
     toggleAddClipWindow();
   };
 
+  /* 
+    Clip the content to be displayed if the string length is greater than certain number of characters 
+    and show three dots(...) indicating there is more content than is visible in the clip. 
+  */
+  const getDisplayContent = function (content: string) {
+    console.log(content.length > 135 ? content.slice(0, 130) + '...' : content);
+    return content.length > 135 ? content.slice(0, 130) + '...' : content;
+  };
+
   const copyToClipboard = function (
     event: React.MouseEvent<HTMLElement> | React.MouseEvent<SVGElement>,
   ) {
@@ -33,16 +42,15 @@ const Clip = function ({ id, title, content }: ClipData) {
 
   return (
     <div className="clip" data-clipid={id} onClick={updateClipId}>
-      <div className="clip__title">{title}</div>
-      <div className="clip__content">
-        <p>{content}</p>
-        <button className="clip__copy" onClick={copyToClipboard}>
-          <MdContentCopy
-            className="clip__copy-icon"
-            onClick={copyToClipboard}
-          />
-        </button>
+      <div className="clip__data">
+        <div className="clip__title">{title}</div>
+        <div className="clip__content">
+          <p>{getDisplayContent(content)}</p>
+        </div>
       </div>
+      <button className="clip__copy" onClick={copyToClipboard}>
+        <MdContentCopy className="clip__copy-icon" onClick={copyToClipboard} />
+      </button>
     </div>
   );
 };
