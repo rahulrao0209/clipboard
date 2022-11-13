@@ -19,7 +19,6 @@ const Clip = function ({ id, title, content }: ClipData) {
     and show three dots(...) indicating there is more content than is visible in the clip. 
   */
   const getDisplayContent = function (content: string) {
-    console.log(content.length > 135 ? content.slice(0, 130) + '...' : content);
     return content.length > 135 ? content.slice(0, 130) + '...' : content;
   };
 
