@@ -182,7 +182,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 2em;
-  color: grey;
+  color: var(--grey-1);
 }
 
 .close-icon {
@@ -192,4 +192,21 @@
 /* Show/Hide window states */
 .hide {
   bottom: -100%;
+}
+
+/* Disabled state */
+.disable {
+  .delete-icon {
+    color: var(--disable-grey);
+  }
+
+  &:hover {
+    cursor: default;
+    color: var(--disable-grey);
+    transform: scale(1);
+  }
+
+  &:hover .delete-icon {
+    color: var(--disable-grey);
+  }
 }

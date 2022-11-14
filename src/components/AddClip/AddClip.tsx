@@ -119,9 +119,10 @@ const AddClip = function () {
 
       <div className="add-clip__controls">
         <button
-          className="add-clip__delete-btn"
+          className={`add-clip__delete-btn ${!clipId && 'disable'}`}
           onClick={handleDeleteClip}
-          tabIndex={-1}>
+          tabIndex={-1}
+          disabled={!clipId}>
           <MdDelete className="delete-icon" />
         </button>
         <button
