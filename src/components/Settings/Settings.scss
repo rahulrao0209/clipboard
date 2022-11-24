@@ -1,0 +1,23 @@
+.settings {
+  width: 80%;
+  min-height: 16rem;
+  border-radius: 6px;
+  position: absolute;
+  bottom: -3%;
+  left: 45%;
+  transform-origin: left bottom;
+  transform: translate(-50%, -50%);
+  transition: all 0.5s 0.25s;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 8px;
+}
+
+.settings--open {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.settings--close {
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+}
