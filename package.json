@@ -2,7 +2,7 @@
   "name": "clipboard",
   "displayName": "Clipboard",
   "version": "1.0.0",
-  "description": "A basic Plasmo extension.",
+  "description": "Clipboard lets you add small text snippets, which can be easily copied to the clipboard whenever required.",
   "author": "Rahul Rao",
   "scripts": {
     "dev": "plasmo dev",
