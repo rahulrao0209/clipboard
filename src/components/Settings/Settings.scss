@@ -1,15 +1,84 @@
+@mixin buttonsCommonStyle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: var(--grey-1);
+  background-color: transparent;
+  width: 100%;
+  padding: 1rem 3rem;
+  border: none;
+  transition: transform 0.2s;
+}
+
 .settings {
   width: 80%;
-  min-height: 16rem;
+  min-height: 40rem;
   border-radius: 6px;
   position: absolute;
-  bottom: -3%;
+  bottom: -13%;
   left: 45%;
   transform-origin: left bottom;
-  transform: translate(-50%, -50%);
-  transition: all 0.5s 0.25s;
+  transition: all 0.3s 0.25s;
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 8px;
+
+  &__title {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: 700;
+    padding: 1.5rem 0;
+    color: var(--primary-blue);
+    user-select: none;
+
+    &:hover {
+      cursor: default;
+    }
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__option {
+    font-size: 2.2rem;
+    width: 90%;
+    margin: 0 auto;
+    border-bottom: 0.5px solid rgb(238, 238, 238);
+  }
+
+  &--delete-all-btn {
+    @include buttonsCommonStyle;
+    &:hover {
+      cursor: pointer;
+      color: var(--delete-red);
+      background-color: var(--delete-faded-red);
+    }
+
+    &:active {
+      cursor: pointer;
+      background-color: transparent;
+      transform: scale(0.9);
+    }
+  }
+
+  &--confirm-before-delete {
+    @include buttonsCommonStyle;
+    &:hover {
+      cursor: pointer;
+      color: var(--primary-blue);
+      background-color: var(--blue-tint-1);
+    }
+
+    &:active {
+      cursor: pointer;
+      background-color: transparent;
+      transform: scale(0.9);
+    }
+  }
 }
 
 .settings--open {
@@ -20,4 +89,17 @@
 .settings--close {
   transform: translate(-50%, -50%) scale(0);
   opacity: 0;
+}
+
+.delete-icon--settings {
+  height: 100%;
+  font-size: 1.1em;
+  margin-top: 0.25rem;
+}
+
+.settings-tool-icon {
+  position: absolute;
+  top: 2rem;
+  left: 26%;
+  font-size: 1.2em;
 }
