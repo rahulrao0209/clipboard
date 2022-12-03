@@ -1,9 +1,9 @@
-import { createContext, useState } from 'react';
+import { PropsWithChildren, createContext, useState } from 'react';
 import type { ClipWindowContextProps } from '../../types';
 
 const ClipWindowContext = createContext<ClipWindowContextProps>(null);
 
-export const ClipWindowContextProvider = function (props: any) {
+export const ClipWindowContextProvider = function (props: PropsWithChildren) {
   const [clipId, setClipId] = useState<string | number>();
   const [showAddClipWindow, setShowAddClipWindow] = useState(false);
 

@@ -1,4 +1,4 @@
-import { createContext, useEffect, useReducer } from 'react';
+import { PropsWithChildren, createContext, useEffect, useReducer } from 'react';
 // import { useStorage } from '@plasmohq/storage/hook';
 import type { ClipContextProps, ClipData } from '../../types';
 import {
@@ -13,7 +13,7 @@ const ClipContext = createContext<ClipContextProps>(null);
 
 const initialState: ClipData[] = [];
 
-export const ClipContextProvider = function (props: any) {
+export const ClipContextProvider = function (props: PropsWithChildren) {
   // const [clips, setClips] = useStorage<ClipData[]>('clips');
   const clips: ClipData[] = JSON.parse(localStorage.getItem('clips'));
 

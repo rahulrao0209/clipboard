@@ -31,6 +31,7 @@ export type AddClipProps = {
 export type SettingsContextProps = {
   settingsModalOpen: boolean;
   toggleSettingsModal: () => void;
+  closeSettingsModal: () => void;
 };
 
 export type ClipContextProps = {
