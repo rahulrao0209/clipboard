@@ -20,10 +20,10 @@
   bottom: -13%;
   left: 45%;
   transform-origin: left bottom;
-  backface-visibility: hidden;
   transition: all 0.3s 0.25s;
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 8px;
+  will-change: transform, opacity;
 
   &__title {
     font-family: 'Poppins', sans-serif;

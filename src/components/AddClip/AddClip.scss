@@ -124,6 +124,7 @@
     padding: 0rem;
     background-color: transparent;
     transition: all 0.2s;
+    will-change: transform;
 
     /* Add hover and active styles */
     &:hover {
@@ -156,6 +157,7 @@
     border: none;
     border-radius: 100vw;
     transition: all 0.2s;
+    will-change: transform;
 
     &:hover {
       cursor: pointer;
