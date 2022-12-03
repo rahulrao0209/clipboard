@@ -1,10 +1,23 @@
 import { useContext } from 'react';
-import { SettingsContext } from '../../context';
+import { DELETED_ALL_CLIPS } from '../../constants';
+import { ClipContext, SettingsContext, ToastContext } from '../../context';
 import { AiFillTool, MdDelete } from '../../icons/index';
 import './Settings.scss';
 
 const Settings = function () {
   const { settingsModalOpen } = useContext(SettingsContext);
+  const { clips, deleteAllClips } = useContext(ClipContext);
+  const { handleToast } = useContext(ToastContext);
+
+  const handleDeleteAllClips = function () {
+    if (clips.length === 0) return;
+
+    /* Delete all clips */
+    deleteAllClips();
+
+    /* Show toast notification */
+    handleToast(true, DELETED_ALL_CLIPS);
+  };
 
   return (
     <div
@@ -19,7 +32,9 @@ const Settings = function () {
       </div>
       <div className="settings__options">
         <div className="settings__option">
-          <button className="settings--delete-all-btn">
+          <button
+            className="settings--delete-all-btn"
+            onClick={handleDeleteAllClips}>
             <span>Delete All Clips</span>
             <span className="delete-icon-container">
               <MdDelete className="delete-icon--settings" />

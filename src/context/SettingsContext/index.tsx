@@ -1,6 +1,7 @@
 import { createContext, useState } from 'react';
+import type { SettingsContextProps } from '../../types';
 
-const SettingsContext = createContext(null);
+const SettingsContext = createContext<SettingsContextProps>(null);
 
 export const SettingsContextProvider = function (props: any) {
   const [settingsModalOpen, setSettingsModalOpen] = useState(false);

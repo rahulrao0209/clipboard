@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
+import type { ToastContextProps } from '../../types';
 
-const ToastContext = createContext(null);
+const ToastContext = createContext<ToastContextProps>(null);
 
 export const ToastContextProvider = function (props: any) {
   const [showToast, setShowToast] = useState<boolean>();

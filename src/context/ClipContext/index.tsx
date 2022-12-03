@@ -1,16 +1,21 @@
 import { createContext, useEffect, useReducer } from 'react';
 // import { useStorage } from '@plasmohq/storage/hook';
-import type { ClipData } from '../../types';
-import { ADD_CLIP, DELETE_CLIP, UPDATE_CLIP } from './clipActions';
+import type { ClipContextProps, ClipData } from '../../types';
+import {
+  ADD_CLIP,
+  DELETE_ALL_CLIPS,
+  DELETE_CLIP,
+  UPDATE_CLIP,
+} from './clipActions';
 import clipReducer from './clipReducer';
 
-const ClipContext = createContext(null);
+const ClipContext = createContext<ClipContextProps>(null);
 
 const initialState: ClipData[] = [];
 
 export const ClipContextProvider = function (props: any) {
   // const [clips, setClips] = useStorage<ClipData[]>('clips');
-  const clips = JSON.parse(localStorage.getItem('clips'));
+  const clips: ClipData[] = JSON.parse(localStorage.getItem('clips'));
 
   const [state, dispatch] = useReducer(clipReducer, clips ?? initialState);
 
@@ -47,7 +52,7 @@ export const ClipContextProvider = function (props: any) {
   };
 
   /* Delete Clip */
-  const deleteClip = function (clipId: string) {
+  const deleteClip = function (clipId: string | number) {
     dispatch({
       type: DELETE_CLIP,
       payload: {
@@ -56,9 +61,14 @@ export const ClipContextProvider = function (props: any) {
     });
   };
 
+  /* Delete All Clips */
+  const deleteAllClips = function () {
+    dispatch({ type: DELETE_ALL_CLIPS });
+  };
+
   return (
     <ClipContext.Provider
-      value={{ clips: state, addClip, updateClip, deleteClip }}>
+      value={{ clips: state, addClip, updateClip, deleteClip, deleteAllClips }}>
       {props.children}
     </ClipContext.Provider>
   );
