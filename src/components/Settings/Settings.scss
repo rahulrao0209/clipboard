@@ -12,6 +12,7 @@
   transition: transform 0.2s;
 }
 
+/* Styling the settings modal */
 .settings {
   width: 80%;
   min-height: 40rem;
@@ -39,6 +40,7 @@
     }
   }
 
+  /* Styling the options and option */
   &__options {
     display: flex;
     flex-direction: column;
@@ -51,6 +53,7 @@
     border-bottom: 0.5px solid rgb(238, 238, 238);
   }
 
+  /* Styling the buttons - delete all button & confirm before delete button */
   &--delete-all-btn {
     @include buttonsCommonStyle;
     &:hover {
@@ -82,6 +85,7 @@
   }
 }
 
+/* Styling the settings open and close states */
 .settings--open {
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
@@ -92,10 +96,18 @@
   opacity: 0;
 }
 
+/* Styling the icons */
+.delete-icon-container {
+  position: relative;
+  width: 5rem;
+  height: 2.5rem;
+}
+
 .delete-icon--settings {
-  height: 100%;
-  font-size: 1.1em;
-  margin-top: 0.25rem;
+  position: absolute;
+  top: -0.5rem;
+  left: 0.5rem;
+  font-size: 3.8rem;
 }
 
 .settings-tool-icon {
@@ -103,4 +115,13 @@
   top: 2rem;
   left: 26%;
   font-size: 1.2em;
+}
+
+/* Styling the title color(As per the confirm switch state) */
+.title--on {
+  color: var(--primary-blue);
+}
+
+.title--off {
+  color: var(--grey-1);
 }

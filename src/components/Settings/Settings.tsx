@@ -2,10 +2,12 @@ import { useContext } from 'react';
 import { DELETED_ALL_CLIPS } from '../../constants';
 import { ClipContext, SettingsContext, ToastContext } from '../../context';
 import { AiFillTool, MdDelete } from '../../icons/index';
+import SlideButton from '../SlideButton/SlideButton';
 import './Settings.scss';
 
 const Settings = function () {
-  const { settingsModalOpen } = useContext(SettingsContext);
+  const { settingsModalOpen, confirmSwitchOn, toggleConfirmSwitch } =
+    useContext(SettingsContext);
   const { clips, deleteAllClips } = useContext(ClipContext);
   const { handleToast } = useContext(ToastContext);
 
@@ -42,8 +44,15 @@ const Settings = function () {
           </button>
         </div>
         <div className="settings__option">
-          <button className="settings--confirm-before-delete">
-            Confirm before delete?
+          <button
+            className="settings--confirm-before-delete"
+            onClick={toggleConfirmSwitch}>
+            <span className={`${confirmSwitchOn ? 'title--on' : 'title-off'}`}>
+              Confirm before delete?
+            </span>
+            <span>
+              <SlideButton />
+            </span>
           </button>
         </div>
       </div>

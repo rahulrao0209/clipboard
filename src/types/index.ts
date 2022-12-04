@@ -30,6 +30,8 @@ export type AddClipProps = {
 /* Context Props */
 export type SettingsContextProps = {
   settingsModalOpen: boolean;
+  confirmSwitchOn: boolean;
+  toggleConfirmSwitch: () => void;
   toggleSettingsModal: () => void;
   closeSettingsModal: () => void;
 };
