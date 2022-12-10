@@ -1,5 +1,10 @@
 import type { ClipAction, ClipData } from '../../types';
-import { ADD_CLIP, DELETE_CLIP, UPDATE_CLIP } from './clipActions';
+import {
+  ADD_CLIP,
+  DELETE_ALL_CLIPS,
+  DELETE_CLIP,
+  UPDATE_CLIP,
+} from './clipActions';
 
 const updateClip = function (clips: ClipData[], clipToUpdate: ClipData) {
   return clips.map((clip: ClipData) => {
@@ -27,6 +32,8 @@ const clipReducer = function (state: ClipData[], action: ClipAction): any {
       return updateClip(state, action.payload.data);
     case DELETE_CLIP:
       return deleteClip(state, action.payload.id);
+    case DELETE_ALL_CLIPS:
+      return [];
     default:
       return [...state];
   }

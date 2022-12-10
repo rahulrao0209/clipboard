@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import {
   ADDED_NEW_CLIP,
   COPIED_TO_CLIPBOARD,
+  DELETED_ALL_CLIPS,
   DELETED_CLIP,
   UPDATED_CLIP,
 } from '../../constants';
@@ -27,6 +28,12 @@ const getToastMessageStyles = function (message: string) {
       };
 
     case DELETED_CLIP:
+      return {
+        color: '#d33636',
+        icon: <MdDelete />,
+      };
+
+    case DELETED_ALL_CLIPS:
       return {
         color: '#d33636',
         icon: <MdDelete />,

@@ -1,0 +1,127 @@
+@mixin buttonsCommonStyle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: var(--grey-1);
+  background-color: transparent;
+  width: 100%;
+  padding: 1rem 3rem;
+  border: none;
+  transition: transform 0.2s;
+}
+
+/* Styling the settings modal */
+.settings {
+  width: 80%;
+  min-height: 40rem;
+  border-radius: 6px;
+  position: absolute;
+  bottom: -13%;
+  left: 45%;
+  transform-origin: left bottom;
+  transition: all 0.3s 0.25s;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 8px;
+  will-change: transform, opacity;
+
+  &__title {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: 700;
+    padding: 1.5rem 0;
+    color: var(--primary-blue);
+    user-select: none;
+
+    &:hover {
+      cursor: default;
+    }
+  }
+
+  /* Styling the options and option */
+  &__options {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__option {
+    font-size: 2.2rem;
+    width: 90%;
+    margin: 0 auto;
+    border-bottom: 0.5px solid rgb(238, 238, 238);
+  }
+
+  /* Styling the buttons - delete all button & confirm before delete button */
+  &--delete-all-btn {
+    @include buttonsCommonStyle;
+    &:hover {
+      cursor: pointer;
+      color: var(--delete-red);
+      background-color: var(--delete-faded-red);
+    }
+
+    &:active {
+      cursor: pointer;
+      background-color: transparent;
+      transform: scale(0.9);
+    }
+  }
+
+  &--confirm-before-delete {
+    @include buttonsCommonStyle;
+    &:hover {
+      cursor: pointer;
+      color: var(--primary-blue);
+      background-color: var(--blue-tint-1);
+    }
+
+    &:active {
+      cursor: pointer;
+      background-color: transparent;
+      transform: scale(0.9);
+    }
+  }
+}
+
+/* Styling the settings open and close states */
+.settings--open {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.settings--close {
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+}
+
+/* Styling the icons */
+.delete-icon-container {
+  position: relative;
+  width: 5rem;
+  height: 2.5rem;
+}
+
+.delete-icon--settings {
+  position: absolute;
+  top: -0.5rem;
+  left: 0.5rem;
+  font-size: 3.8rem;
+}
+
+.settings-tool-icon {
+  position: absolute;
+  top: 2rem;
+  left: 26%;
+  font-size: 1.2em;
+}
+
+/* Styling the title color(As per the confirm switch state) */
+.title--on {
+  color: var(--primary-blue);
+}
+
+.title--off {
+  color: var(--grey-1);
+}

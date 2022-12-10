@@ -1,8 +1,9 @@
-import { createContext, useEffect, useState } from 'react';
+import { PropsWithChildren, createContext, useEffect, useState } from 'react';
+import type { ToastContextProps } from '../../types';
 
-const ToastContext = createContext(null);
+const ToastContext = createContext<ToastContextProps>(null);
 
-export const ToastContextProvider = function (props: any) {
+export const ToastContextProvider = function (props: PropsWithChildren) {
   const [showToast, setShowToast] = useState<boolean>();
   const [toastMessage, setToastMessage] = useState('');
   let toastTimeout: number;
