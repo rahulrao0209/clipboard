@@ -2,6 +2,7 @@ import {
   AddClip,
   BottomBar,
   ClipList,
+  ConfirmModal,
   Header,
   Settings,
   Toast,
@@ -29,6 +30,7 @@ const Popup = function () {
               <BottomBar />
               <AddClip />
               <Settings />
+              <ConfirmModal />
             </ToastContextProvider>
           </SettingsContextProvider>
         </ClipContextProvider>

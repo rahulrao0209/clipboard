@@ -1,0 +1,103 @@
+.confirm-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 100;
+  background-color: var(--primary-white);
+  width: 70%;
+  box-shadow: rgba(149, 157, 165, 0.6) 0px 16px 24px;
+
+  font-size: 2.2rem;
+  padding: 3rem 2.5rem;
+  outline: 1px solid var(--primary-blue);
+  border-radius: 10px;
+
+  & > p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem auto;
+    text-align: center;
+  }
+
+  &__checkbox {
+    position: relative;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-top: 0.3rem;
+    border-radius: 2px;
+    outline: 1px solid var(--primary-blue);
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+
+    & > button {
+      will-change: transform;
+      transition: transform 0.25s;
+      font-size: 0.9em;
+      padding: 0.5em 1em;
+      border: none;
+      border-radius: 4px;
+      background-color: #fff;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+
+    // Delete button
+    &--delete {
+      color: var(--delete-red);
+      outline: 1px solid currentColor;
+      &:hover {
+        color: var(--primary-white);
+        background-color: var(--delete-red);
+      }
+    }
+
+    // Cancel button
+    &--cancel {
+      color: var(--primary-blue);
+      outline: 1px solid currentColor;
+      &:hover {
+        color: var(--primary-white);
+        background-color: var(--primary-blue);
+      }
+    }
+  }
+}
+
+// Check icon
+.check-icon {
+  color: var(--success-green);
+  font-size: 1.4em;
+  position: absolute;
+  transform: translate(-50%, -30%);
+}
+
+// .backdrop {
+//   position: fixed;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   width: 100vw;
+//   height: 100vh;
+//   background-color: rgb(58, 58, 58, 0.2);
+//   // backdrop-filter: blur(1px);
+//   z-index: 99;
+// }

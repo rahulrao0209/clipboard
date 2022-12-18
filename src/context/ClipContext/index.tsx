@@ -1,5 +1,4 @@
 import { PropsWithChildren, createContext, useEffect, useReducer } from 'react';
-// import { useStorage } from '@plasmohq/storage/hook';
 import type { ClipContextProps, ClipData } from '../../types';
 import {
   ADD_CLIP,
@@ -14,14 +13,12 @@ const ClipContext = createContext<ClipContextProps>(null);
 const initialState: ClipData[] = [];
 
 export const ClipContextProvider = function (props: PropsWithChildren) {
-  // const [clips, setClips] = useStorage<ClipData[]>('clips');
   const clips: ClipData[] = JSON.parse(localStorage.getItem('clips'));
 
   const [state, dispatch] = useReducer(clipReducer, clips ?? initialState);
 
-  /* Persist the data in chrome storage */
+  /* Persist the data in local storage */
   useEffect(() => {
-    // setClips(state);
     localStorage.setItem('clips', JSON.stringify(state));
   }, [state]);
 
