@@ -15,6 +15,7 @@ const {
   ClipWindowContextProvider,
   ToastContextProvider,
   SettingsContextProvider,
+  ConfirmModalContextProvider,
 } = providers;
 
 const Popup = function () {
@@ -24,13 +25,15 @@ const Popup = function () {
         <ClipContextProvider>
           <SettingsContextProvider>
             <ToastContextProvider>
-              <Toast />
-              <Header />
-              <ClipList />
-              <BottomBar />
-              <AddClip />
-              <Settings />
-              <ConfirmModal />
+              <ConfirmModalContextProvider>
+                <Toast />
+                <Header />
+                <ClipList />
+                <BottomBar />
+                <AddClip />
+                <Settings />
+                <ConfirmModal />
+              </ConfirmModalContextProvider>
             </ToastContextProvider>
           </SettingsContextProvider>
         </ClipContextProvider>

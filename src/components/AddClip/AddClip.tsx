@@ -1,6 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
 import { ADDED_NEW_CLIP, DELETED_CLIP, UPDATED_CLIP } from '../../constants';
-import { ClipContext, ClipWindowContext, ToastContext } from '../../context';
+import {
+  ClipContext,
+  ClipWindowContext,
+  ConfirmModalContext,
+  SettingsContext,
+  ToastContext,
+} from '../../context';
 import { BiSend, MdDelete, TfiClose } from '../../icons';
 import type { ClipData } from '../../types';
 import './AddClip.scss';
@@ -15,6 +21,9 @@ const AddClip = function () {
   const { clipId, setClipId, showAddClipWindow, toggleAddClipWindow } =
     useContext(ClipWindowContext);
   const { handleToast } = useContext(ToastContext);
+  const { confirmSwitchOn } = useContext(SettingsContext);
+  const { proceedToDelete, setProceedToDelete, setShowConfirmModal } =
+    useContext(ConfirmModalContext);
 
   const handleUpdateClip = function () {
     /* Update an existing clip */
@@ -68,6 +77,14 @@ const AddClip = function () {
 
     /* Show toast notification */
     handleToast(true, DELETED_CLIP);
+
+    /* Reset proceed to delete value to false */
+    setProceedToDelete(false);
+  };
+
+  /* If the confirm switch is on, show the delete confirmation modal before deleting */
+  const handleDeleteConfirmation = function () {
+    setShowConfirmModal(true);
   };
 
   useEffect(() => {
@@ -90,6 +107,16 @@ const AddClip = function () {
 
     getCurrentClipValues();
   }, [clipId]);
+
+  /* 
+   If the user proceed's to delete the clip, via the confirmation modal,
+   only then delete.
+  */
+  useEffect(() => {
+    if (proceedToDelete) {
+      handleDeleteClip();
+    }
+  }, [proceedToDelete]);
 
   return (
     <div className={`add-clip ${showAddClipWindow ? '' : 'hide'}`}>
@@ -120,7 +147,9 @@ const AddClip = function () {
       <div className="add-clip__controls">
         <button
           className={`add-clip__delete-btn ${!clipId && 'disable'}`}
-          onClick={handleDeleteClip}
+          onClick={
+            confirmSwitchOn ? handleDeleteConfirmation : handleDeleteClip
+          }
           tabIndex={-1}
           disabled={!clipId}>
           <MdDelete className="delete-icon" />

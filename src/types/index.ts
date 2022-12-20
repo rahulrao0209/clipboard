@@ -56,3 +56,10 @@ export type ToastContextProps = {
   toastMessage: string;
   handleToast: (show: boolean, message: string) => void;
 };
+
+export type ConfirmModalContextProps = {
+  showConfirmModal: boolean;
+  proceedToDelete: boolean;
+  setShowConfirmModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setProceedToDelete: React.Dispatch<React.SetStateAction<boolean>>;
+};
