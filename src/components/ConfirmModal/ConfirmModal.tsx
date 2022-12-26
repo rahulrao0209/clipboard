@@ -1,17 +1,29 @@
 import { useContext } from 'react';
+import {
+  DELETE_ALL_CLIPS_CONFIRM,
+  DELETE_SINGLE_CLIP_CONFIRM,
+} from '../../constants';
 import { ConfirmModalContext, SettingsContext } from '../../context';
 import { GiCheckMark } from '../../icons';
 import './ConfirmModal.scss';
 
 const ConfirmModal = function () {
   const { confirmSwitchOn, toggleConfirmSwitch } = useContext(SettingsContext);
-  const { showConfirmModal, setShowConfirmModal, setProceedToDelete } =
-    useContext(ConfirmModalContext);
+  const {
+    showConfirmModal,
+    setShowConfirmModal,
+    setProceedToDelete,
+    setProceedToDeleteAll,
+    confirmMessage,
+  } = useContext(ConfirmModalContext);
 
   if (!showConfirmModal) return null;
 
   const handleDelete = function () {
-    setProceedToDelete(true);
+    if (confirmMessage === DELETE_SINGLE_CLIP_CONFIRM) setProceedToDelete(true);
+    if (confirmMessage === DELETE_ALL_CLIPS_CONFIRM)
+      setProceedToDeleteAll(true);
+
     setShowConfirmModal(false);
   };
 
@@ -24,7 +36,7 @@ const ConfirmModal = function () {
     <>
       <div className="backdrop"></div>
       <div className="confirm-modal">
-        <h3>Are you sure you want to delete the clip?</h3>
+        <h3>{confirmMessage}</h3>
         <p>
           <span
             className="confirm-modal__checkbox"

@@ -1,6 +1,12 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { DELETED_ALL_CLIPS } from '../../constants';
-import { ClipContext, SettingsContext, ToastContext } from '../../context';
+import { DELETE_ALL_CLIPS_CONFIRM } from '../../constants';
+import {
+  ClipContext,
+  ConfirmModalContext,
+  SettingsContext,
+  ToastContext,
+} from '../../context';
 import { AiFillTool, MdDelete } from '../../icons/index';
 import SlideButton from '../SlideButton/SlideButton';
 import './Settings.scss';
@@ -9,6 +15,12 @@ const Settings = function () {
   const { settingsModalOpen, confirmSwitchOn, toggleConfirmSwitch } =
     useContext(SettingsContext);
   const { clips, deleteAllClips } = useContext(ClipContext);
+  const {
+    proceedToDeleteAll,
+    setConfirmMessage,
+    setShowConfirmModal,
+    setProceedToDeleteAll,
+  } = useContext(ConfirmModalContext);
   const { handleToast } = useContext(ToastContext);
 
   const handleDeleteAllClips = function () {
@@ -19,7 +31,26 @@ const Settings = function () {
 
     /* Show toast notification */
     handleToast(true, DELETED_ALL_CLIPS);
+
+    /* Reset proceed to delete all value to false */
+    setProceedToDeleteAll(false);
   };
+
+  /* If the confirm switch is on, show the delete confirmation modal before deleting */
+  const handleDeleteAllConfirmation = function () {
+    setConfirmMessage(DELETE_ALL_CLIPS_CONFIRM);
+    setShowConfirmModal(true);
+  };
+
+  /* 
+   If the user proceeds to delete the clip, via the confirmation modal,
+   only then delete.
+  */
+  useEffect(() => {
+    if (proceedToDeleteAll) {
+      handleDeleteAllClips();
+    }
+  }, [proceedToDeleteAll]);
 
   return (
     <div
@@ -36,7 +67,11 @@ const Settings = function () {
         <div className="settings__option">
           <button
             className="settings--delete-all-btn"
-            onClick={handleDeleteAllClips}>
+            onClick={
+              confirmSwitchOn
+                ? handleDeleteAllConfirmation
+                : handleDeleteAllClips
+            }>
             <span>Delete All Clips</span>
             <span className="delete-icon-container">
               <MdDelete className="delete-icon--settings" />

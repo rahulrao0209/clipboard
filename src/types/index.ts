@@ -60,6 +60,10 @@ export type ToastContextProps = {
 export type ConfirmModalContextProps = {
   showConfirmModal: boolean;
   proceedToDelete: boolean;
+  proceedToDeleteAll: boolean;
+  confirmMessage: string;
   setShowConfirmModal: React.Dispatch<React.SetStateAction<boolean>>;
   setProceedToDelete: React.Dispatch<React.SetStateAction<boolean>>;
+  setProceedToDeleteAll: React.Dispatch<React.SetStateAction<boolean>>;
+  setConfirmMessage: React.Dispatch<React.SetStateAction<string>>;
 };

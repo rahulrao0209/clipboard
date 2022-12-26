@@ -6,6 +6,8 @@ const ConfirmModalContext = createContext<ConfirmModalContextProps>(null);
 export const ConfirmModalContextProvider = function (props: PropsWithChildren) {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [proceedToDelete, setProceedToDelete] = useState(false);
+  const [proceedToDeleteAll, setProceedToDeleteAll] = useState(false);
+  const [confirmMessage, setConfirmMessage] = useState('');
 
   return (
     <ConfirmModalContext.Provider
@@ -14,6 +16,10 @@ export const ConfirmModalContextProvider = function (props: PropsWithChildren) {
         setShowConfirmModal,
         proceedToDelete,
         setProceedToDelete,
+        proceedToDeleteAll,
+        setProceedToDeleteAll,
+        confirmMessage,
+        setConfirmMessage,
       }}>
       {props.children}
     </ConfirmModalContext.Provider>

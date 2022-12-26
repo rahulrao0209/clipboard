@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { ADDED_NEW_CLIP, DELETED_CLIP, UPDATED_CLIP } from '../../constants';
+import { DELETE_SINGLE_CLIP_CONFIRM } from '../../constants';
 import {
   ClipContext,
   ClipWindowContext,
@@ -22,8 +23,12 @@ const AddClip = function () {
     useContext(ClipWindowContext);
   const { handleToast } = useContext(ToastContext);
   const { confirmSwitchOn } = useContext(SettingsContext);
-  const { proceedToDelete, setProceedToDelete, setShowConfirmModal } =
-    useContext(ConfirmModalContext);
+  const {
+    proceedToDelete,
+    setProceedToDelete,
+    setShowConfirmModal,
+    setConfirmMessage,
+  } = useContext(ConfirmModalContext);
 
   const handleUpdateClip = function () {
     /* Update an existing clip */
@@ -84,6 +89,7 @@ const AddClip = function () {
 
   /* If the confirm switch is on, show the delete confirmation modal before deleting */
   const handleDeleteConfirmation = function () {
+    setConfirmMessage(DELETE_SINGLE_CLIP_CONFIRM);
     setShowConfirmModal(true);
   };
 
@@ -109,7 +115,7 @@ const AddClip = function () {
   }, [clipId]);
 
   /* 
-   If the user proceed's to delete the clip, via the confirmation modal,
+   If the user proceeds to delete the clip, via the confirmation modal,
    only then delete.
   */
   useEffect(() => {
