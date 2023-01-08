@@ -66,7 +66,9 @@ const Settings = function () {
       <div className="settings__options">
         <div className="settings__option">
           <button
-            className="settings--delete-all-btn"
+            className={`settings--delete-all-btn ${
+              clips.length === 0 ? 'delete-all-disabled' : ''
+            }`}
             onClick={
               confirmSwitchOn
                 ? handleDeleteAllConfirmation

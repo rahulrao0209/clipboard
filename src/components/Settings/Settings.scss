@@ -125,3 +125,18 @@
 .title--off {
   color: var(--grey-1);
 }
+
+/* Styling disabled state for the delete all button */
+.delete-all-disabled {
+  color: var(--disable-grey);
+
+  &:hover {
+    cursor: default;
+    color: var(--disable-grey);
+    background-color: transparent;
+  }
+
+  &:active {
+    transform: scale(1);
+  }
+}
