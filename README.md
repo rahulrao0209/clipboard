@@ -1,7 +1,5 @@
 ## ***Clipboard***
-<div style="text-align:center">
-  <img src="./assets/clipboard-logo.png" alt=""/>
-</div>
+![Clipboard](./assets/clipboard-thumbnail.png)
 <p style="text-align:center">
   <b>Clipboard</b> is a simple <i>chromium extension tool</i> for copy pasting small text snippets.
 </p>
